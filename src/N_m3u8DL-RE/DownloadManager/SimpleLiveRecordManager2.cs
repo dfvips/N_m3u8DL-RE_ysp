@@ -684,7 +684,7 @@ return name;
                             //推送给消费者
                             await BlockDic[task.Id].SendAsync(newList);
                             //更新最新链接
-                            LastFileNameDic[task.Id] = GetSegmentName(newList.Last(), allHasDatetime, SamePathDic[task.Id]);
+                            LastFileNameDic[task.Id] = newList.Last().Split("?").Fisrt();
                             //尝试更新时间戳
                             var dt = newList.Last().DateTime;
                             DateTimeDic[task.Id] = dt != null ? GetUnixTimestamp(dt.Value) : 0L;
@@ -746,7 +746,7 @@ return name;
             }
             else
             {
-                index = streamSpec.Playlist!.MediaParts[0].MediaSegments.FindIndex(s => GetSegmentName(s, allHasDatetime, allSamePath) == lastName);
+                index = streamSpec.Playlist!.MediaParts[0].MediaSegments.FindIndex(s => s.Url.Split("?").Fisrt() == lastName);
             }
 
             if (index > -1)
