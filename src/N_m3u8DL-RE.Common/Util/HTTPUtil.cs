@@ -17,7 +17,7 @@ namespace N_m3u8DL_RE.Common.Util
 
         public static readonly HttpClient AppHttpClient = new(HttpClientHandler)
         {
-            Timeout = TimeSpan.FromSeconds(100),
+            Timeout = TimeSpan.FromSeconds(2),
             DefaultRequestVersion = HttpVersion.Version20,
             DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,
         };
