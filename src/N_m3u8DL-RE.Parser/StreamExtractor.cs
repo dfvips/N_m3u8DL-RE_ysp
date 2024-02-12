@@ -33,7 +33,7 @@ namespace N_m3u8DL_RE.Parser
         public void LoadSourceFromUrl(string url)
         {
             int count = 8;
-            :retry
+            retry:
             try {
                 
             Logger.Info(ResString.loadingUrl + url);
