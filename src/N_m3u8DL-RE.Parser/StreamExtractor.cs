@@ -32,6 +32,10 @@ namespace N_m3u8DL_RE.Parser
 
         public void LoadSourceFromUrl(string url)
         {
+            int count = 8;
+            :retry
+            try {
+                
             Logger.Info(ResString.loadingUrl + url);
             if (url.StartsWith("file:"))
             {
@@ -53,6 +57,9 @@ namespace N_m3u8DL_RE.Parser
             }
             this.rawText = rawText.Trim();
             LoadSourceFromText(this.rawText);
+            }catch(Exception){
+                if(count-->0) goto retry;
+            }
         }
 
         public void LoadSourceFromText(string rawText)
