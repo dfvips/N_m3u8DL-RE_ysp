@@ -96,7 +96,7 @@ namespace N_m3u8DL_RE.DownloadManager
 
             bool hls = StreamExtractor.ExtractorType == ExtractorType.HLS;
 
-            string name = DateTime.Now.ToString("yyyyMMddHHmmssfff")+"_"+OtherUtil.GetFileNameFromInput(segment.Url, false);
+            string name = OtherUtil.GetFileNameFromInput(segment.Url, false) + "_" + DateTime.Now.ToString("yyyyMMddHHmmssfff");
 return name;
             if (allSamePath)
             {
