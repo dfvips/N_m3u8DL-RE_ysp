@@ -1,4 +1,4 @@
-﻿using N_m3u8DL_RE.Common.Entity;
+using N_m3u8DL_RE.Common.Entity;
 using N_m3u8DL_RE.Common.JsonConverter;
 using System;
 using System.Collections.Generic;
@@ -71,7 +71,8 @@ namespace N_m3u8DL_RE.Common.Util
         public static string? FindExecutable(string name)
         {
             var fileExt = OperatingSystem.IsWindows() ? ".exe" : "";
-            var searchPath = new[] { Environment.CurrentDirectory, Path.GetDirectoryName(Environment.ProcessPath) };
+            var processDir = Path.GetDirectoryName(Environment.ProcessPath);
+            var searchPath = new[] { Environment.CurrentDirectory, processDir }.Where(p => !string.IsNullOrEmpty(p)).Select(p => p!);
             var envPath = Environment.GetEnvironmentVariable("PATH")?.Split(Path.PathSeparator) ??
                           Array.Empty<string>();
             return searchPath.Concat(envPath).Select(p => Path.Combine(p, name + fileExt)).FirstOrDefault(File.Exists);

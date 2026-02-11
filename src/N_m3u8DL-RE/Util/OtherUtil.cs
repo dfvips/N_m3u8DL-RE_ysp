@@ -1,4 +1,4 @@
-﻿using N_m3u8DL_RE.Common.Entity;
+using N_m3u8DL_RE.Common.Entity;
 using N_m3u8DL_RE.Common.Log;
 using N_m3u8DL_RE.Enum;
 using System.CommandLine;
@@ -79,7 +79,7 @@ namespace N_m3u8DL_RE.Util
             var hours = -1;
             var mins = -1;
             var secs = -1;
-            arr.Reverse().Select(i => Convert.ToInt32(i)).ToList().ForEach(item =>
+            arr.AsEnumerable().Reverse().Select(i => Convert.ToInt32(i)).ToList().ForEach(item =>
             {
                 if (secs == -1) secs = item;
                 else if (mins == -1) mins = item;

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -203,7 +203,7 @@ namespace N_m3u8DL_RE.Common.Entity
             str = str.Replace(',', '.');
             var ms = Convert.ToInt32(str.Split('.').Last());
             var o = str.Split('.').First();
-            var t = o.Split(':').Reverse().ToList();
+            var t = o.Split(':').AsEnumerable().Reverse().ToList();
             var time = 0L + ms;
             for (int i = 0; i < t.Count(); i++)
             {
